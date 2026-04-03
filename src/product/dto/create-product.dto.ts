@@ -58,6 +58,11 @@ export class CreateProductDto {
     @ApiProperty({ description: 'Description of the product [Optional]', example: 'A comfortable cotton t-shirt', name: 'description' })
     private _description: string;
 
+    @IsString()
+    @MaxLength(200)
+    @ApiProperty({ description: "Type of the product [required]", example: 'T-Shirt', name: "type" })
+    private _type: string;
+
     @IsNotEmpty()
     @ApiProperty({ description: 'Gender for which the product is intended', example: 'Male', name: 'gender' })
     private _gender: Gender;
@@ -105,6 +110,12 @@ export class CreateProductDto {
     }
     public get description(): string {
         return this._description;
+    }
+    public get type(): string {
+        return this._type;
+    }
+    public set type(value: string) {
+        this._type = value;
     }
     public get gender(): Gender {
         return this._gender;

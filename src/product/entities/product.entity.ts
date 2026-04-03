@@ -40,6 +40,13 @@ export class Product {
     private _brand: string;
     
     @Column({
+        type: "varchar",
+        length: 100,
+        nullable: false
+    })
+    private _type: string;
+
+    @Column({
         name: "description",
         type: "varchar",
         length: 250,
@@ -123,6 +130,12 @@ export class Product {
     }
     public get name(): string {
         return this._name;
+    }
+    public get type(): string {
+        return this._type;
+    }
+    public set type(value: string) {
+        this._type = value;
     }
     public set name(value: string) {
         this._name = value;
